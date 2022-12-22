@@ -21,7 +21,9 @@ namespace VectorsForms
         public List<Triangle> SelectAll()
         {
             string query = $"SELECT * FROM triangles";
+            
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
+            
             List<Triangle> ret = new List<Triangle>();
 
             _connection.openConnection();
@@ -34,6 +36,7 @@ namespace VectorsForms
             }
             reader.Close();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
             return ret;
         }
@@ -46,6 +49,7 @@ namespace VectorsForms
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
             cmd.ExecuteNonQuery();            
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
         }
         public Triangle GetById(int id)
@@ -67,6 +71,7 @@ namespace VectorsForms
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
             int num = cmd.ExecuteNonQuery();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
             return num > 0;
         }
@@ -77,6 +82,7 @@ namespace VectorsForms
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
             int num = cmd.ExecuteNonQuery();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
             return num > 0;
         }
     }

@@ -34,6 +34,7 @@ namespace VectorsForms
             }
             reader.Close();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
             return ret;
         }
@@ -46,6 +47,7 @@ namespace VectorsForms
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
             cmd.ExecuteNonQuery();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
         }
         public Vector GetById(int id)
@@ -55,7 +57,7 @@ namespace VectorsForms
             if (result == null)
             {
                 result=new Vector(id);
-                ObjectList.Add($"vector_{id}",result);
+                ObjectList.Add($"vectors_{id}",result);
             }
             return result;
         }
@@ -67,6 +69,7 @@ namespace VectorsForms
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());            
             int num = cmd.ExecuteNonQuery();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
             return num>0;
         }
@@ -77,6 +80,7 @@ namespace VectorsForms
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
             int num = cmd.ExecuteNonQuery();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
             return num > 0;
         }
 

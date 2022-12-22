@@ -26,6 +26,7 @@ namespace VectorsForms
             }
             reader.Close();
             _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
         }
         public Vector(double x,double y):base(0)
         {

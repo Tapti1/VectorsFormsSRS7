@@ -7,9 +7,21 @@ namespace VectorsForms
         /// </summary>
         [STAThread]
         static void Main()
-        {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+        {       
+            VectorMapper vectorMapper = new VectorMapper();
+            TriangleMapper triangleMapper = new TriangleMapper();
+
+            Vector v1 = vectorMapper.GetById(1);
+            Vector v2 = vectorMapper.GetById(1);
+
+            Console.WriteLine();
+            Console.WriteLine("======================================");
+
+            Triangle t1 = new Triangle(1, 1);
+
+            Console.WriteLine("");
+            Console.WriteLine("///////////////////////////////////////");
+
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }

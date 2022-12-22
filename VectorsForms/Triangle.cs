@@ -14,7 +14,7 @@ namespace VectorsForms
 
         public Triangle(int id) : base(id)
         {
-            string query = $"SELECT * FROM triangles WHERE id={id}";
+            string query = $"SELECT * FROM triangles WHERE id={id}";            
 
             _connection.openConnection();
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
@@ -28,7 +28,8 @@ namespace VectorsForms
                 _v2_id = reader.GetInt32(2);
             }
             reader.Close();
-            _connection.closeConnection();            
+            _connection.closeConnection();
+            Console.WriteLine($"Выполняется запрос {query}");
 
             VectorMapper mapper = new VectorMapper();
             v1 = mapper.GetById(_v1_id);
