@@ -1,0 +1,152 @@
+using System.Data.SqlClient;
+using System.Data;
+using System;
+
+namespace VectorsForms
+{
+    public partial class Form1 : Form
+    {
+        VectorMapper vectorMapper;
+        TriangleMapper triangleMapper;
+        public Form1()
+        {
+            InitializeComponent();
+        }        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            vectorMapper = new VectorMapper();
+            triangleMapper = new TriangleMapper();
+            CreateColumns();
+            updateGridVectors();            
+        }        
+        public void CreateColumns()
+        {
+            dataGridView1.Columns.Add("id", "id");
+            dataGridView1.Columns.Add("x", "x");
+            dataGridView1.Columns.Add("y", "y");
+
+            triangleDataGridView.Columns.Add("id", "id");
+            triangleDataGridView.Columns.Add("v1_id", "v1_id");
+            triangleDataGridView.Columns.Add("v2_id", "v2_id");
+        }        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double x=Convert.ToDouble(vectorAddX.Text);
+            double y= Convert.ToDouble(vectorAddY.Text);
+            Vector v = new Vector(x, y);
+            vectorMapper.Insert(v);
+            updateGridVectors();
+            updateGridTriangles();
+        }        
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+       
+        public void updateGridVectors()
+        {
+            dataGridView1.Rows.Clear();
+            List<Vector> vectors = vectorMapper.SelectAll();
+            for(int i = 0; i < vectors.Count(); i++)
+            {
+                dataGridView1.Rows.Add(vectors[i]._id, vectors[i]._x, vectors[i]._y);
+            }            
+        }
+        public void updateGridTriangles()
+        {
+            triangleDataGridView.Rows.Clear();
+            List<Triangle> triangles = triangleMapper.SelectAll();
+            for (int i = 0; i < triangles.Count(); i++)
+            {
+                triangleDataGridView.Rows.Add(triangles[i]._id, triangles[i]._v1_id, triangles[i]._v2_id);
+            }
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textDelById_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(vectorDelById.Text);
+            if (!vectorMapper.Delete(id))
+            {
+                MessageBox.Show("Вектор не найден, проверьте id","DELETE");
+            }
+            updateGridVectors();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            double x = Convert.ToDouble(vectorUpdateX.Text);
+            double y = Convert.ToDouble(vectorUpdateY.Text);
+            int id = Convert.ToInt32(vectorUpdateById.Text);
+            Vector v = new Vector(x, y);
+            if (!vectorMapper.Update(id, v))
+            {
+                MessageBox.Show("Вектор не найден, проверьте id", "UPDATE");
+            }
+            updateGridVectors();
+        }
+
+        private void triangleDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int v1_id = Convert.ToInt32(triangleAddX.Text);
+            int v2_id = Convert.ToInt32(triangleAddY.Text);
+            Triangle t = new Triangle(v1_id,v2_id);
+            triangleMapper.Insert(t);
+            updateGridTriangles();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(triangleDelById.Text);
+            if (!triangleMapper.Delete(id))
+            {
+                MessageBox.Show("Треугольник не найден, проверьте id", "DELETE");
+            }
+            updateGridTriangles();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int v1_id = Convert.ToInt32(triangleUpdateX.Text);
+            int v2_id = Convert.ToInt32(triangleUpdateY.Text);
+            int id = Convert.ToInt32(triangleUpdateById.Text);
+            Triangle t=new Triangle(v1_id,v2_id);
+            if (!triangleMapper.Update(id, t))
+            {
+                MessageBox.Show("Треугольник не найден, проверьте id", "UPDATE");
+            }
+            updateGridTriangles();
+        }
+    }
+}
