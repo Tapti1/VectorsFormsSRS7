@@ -76,7 +76,7 @@ namespace VectorsForms
             List<Triangle> triangles = triangleMapper.SelectAll();
             for (int i = 0; i < triangles.Count(); i++)
             {
-                triangleDataGridView.Rows.Add(triangles[i]._id, triangles[i]._v1_id, triangles[i]._v2_id);
+                triangleDataGridView.Rows.Add(triangles[i]._id, triangles[i].v1._id, triangles[i].v2._id);
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -147,6 +147,11 @@ namespace VectorsForms
                 MessageBox.Show("Треугольник не найден, проверьте id", "UPDATE");
             }
             updateGridTriangles();
+        }
+
+        private void triangleAddX_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

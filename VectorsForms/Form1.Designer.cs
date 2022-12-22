@@ -368,6 +368,7 @@
             this.triangleAddX.Name = "triangleAddX";
             this.triangleAddX.Size = new System.Drawing.Size(150, 31);
             this.triangleAddX.TabIndex = 36;
+            this.triangleAddX.TextChanged += new System.EventHandler(this.triangleAddX_TextChanged);
             // 
             // triangleDelById
             // 
