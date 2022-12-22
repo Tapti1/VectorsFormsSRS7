@@ -15,7 +15,7 @@ namespace VectorsForms
         {
             if (_connection == null)
             {
-                _connection = new DBConnection(@"Data Source=DESKTOP-RQ1TD73\SQLEXPRESS;Initial Catalog=VecrorsBase;Integrated Security=True");
+                _connection = new DBConnection(@"Data Source=DESKTOP-RQ1TD73\SQLEXPRESS;Initial Catalog=VectorsBase;Integrated Security=True");
             }
         }
         public List<Triangle> SelectAll()
@@ -44,7 +44,7 @@ namespace VectorsForms
 
             _connection.openConnection();
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
-            cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();            
             _connection.closeConnection();
 
         }

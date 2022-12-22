@@ -239,7 +239,7 @@
             // 
             // triangleUpdateY
             // 
-            this.triangleUpdateY.Location = new System.Drawing.Point(77, 1140);
+            this.triangleUpdateY.Location = new System.Drawing.Point(97, 1140);
             this.triangleUpdateY.Name = "triangleUpdateY";
             this.triangleUpdateY.Size = new System.Drawing.Size(150, 31);
             this.triangleUpdateY.TabIndex = 51;
@@ -249,18 +249,18 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(36, 1146);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(22, 25);
+            this.label12.Size = new System.Drawing.Size(53, 25);
             this.label12.TabIndex = 50;
-            this.label12.Text = "Y";
+            this.label12.Text = "V2 id";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(35, 1094);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 25);
+            this.label5.Size = new System.Drawing.Size(53, 25);
             this.label5.TabIndex = 49;
-            this.label5.Text = "X";
+            this.label5.Text = "V1 id";
             // 
             // triangleDataGridView
             // 
@@ -294,7 +294,7 @@
             // 
             // triangleUpdateX
             // 
-            this.triangleUpdateX.Location = new System.Drawing.Point(77, 1088);
+            this.triangleUpdateX.Location = new System.Drawing.Point(97, 1091);
             this.triangleUpdateX.Name = "triangleUpdateX";
             this.triangleUpdateX.Size = new System.Drawing.Size(150, 31);
             this.triangleUpdateX.TabIndex = 48;
@@ -313,13 +313,13 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(25, 852);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 25);
+            this.label8.Size = new System.Drawing.Size(53, 25);
             this.label8.TabIndex = 38;
-            this.label8.Text = "Y";
+            this.label8.Text = "V2 id";
             // 
             // triangleAddY
             // 
-            this.triangleAddY.Location = new System.Drawing.Point(77, 852);
+            this.triangleAddY.Location = new System.Drawing.Point(87, 852);
             this.triangleAddY.Name = "triangleAddY";
             this.triangleAddY.Size = new System.Drawing.Size(150, 31);
             this.triangleAddY.TabIndex = 39;
@@ -329,9 +329,10 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(25, 798);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(23, 25);
+            this.label10.Size = new System.Drawing.Size(53, 25);
             this.label10.TabIndex = 37;
-            this.label10.Text = "X";
+            this.label10.Text = "V1 id";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // button4
             // 
@@ -364,7 +365,7 @@
             // 
             // triangleAddX
             // 
-            this.triangleAddX.Location = new System.Drawing.Point(77, 798);
+            this.triangleAddX.Location = new System.Drawing.Point(87, 798);
             this.triangleAddX.Name = "triangleAddX";
             this.triangleAddX.Size = new System.Drawing.Size(150, 31);
             this.triangleAddX.TabIndex = 36;

@@ -15,7 +15,7 @@ namespace VectorsForms
         {
             if (_connection == null)
             {
-                _connection = new DBConnection(@"Data Source=DESKTOP-RQ1TD73\SQLEXPRESS;Initial Catalog=VecrorsBase;Integrated Security=True");
+                _connection = new DBConnection(@"Data Source=DESKTOP-RQ1TD73\SQLEXPRESS;Initial Catalog=VectorsBase;Integrated Security=True");
             }
         }
         public List<Vector> SelectAll()

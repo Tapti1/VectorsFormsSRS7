@@ -18,7 +18,8 @@ namespace VectorsForms
             vectorMapper = new VectorMapper();
             triangleMapper = new TriangleMapper();
             CreateColumns();
-            updateGridVectors();            
+            updateGridVectors();
+            updateGridTriangles();
         }        
         public void CreateColumns()
         {
@@ -28,7 +29,11 @@ namespace VectorsForms
 
             triangleDataGridView.Columns.Add("id", "id");
             triangleDataGridView.Columns.Add("v1_id", "v1_id");
+            triangleDataGridView.Columns.Add("x", "x");
+            triangleDataGridView.Columns.Add("y", "y");
             triangleDataGridView.Columns.Add("v2_id", "v2_id");
+            triangleDataGridView.Columns.Add("x", "x");
+            triangleDataGridView.Columns.Add("y", "y");
         }        
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +43,6 @@ namespace VectorsForms
             Vector v = new Vector(x, y);
             vectorMapper.Insert(v);
             updateGridVectors();
-            updateGridTriangles();
         }        
 
         private void label1_Click(object sender, EventArgs e)
@@ -76,7 +80,9 @@ namespace VectorsForms
             List<Triangle> triangles = triangleMapper.SelectAll();
             for (int i = 0; i < triangles.Count(); i++)
             {
-                triangleDataGridView.Rows.Add(triangles[i]._id, triangles[i].v1._id, triangles[i].v2._id);
+                triangleDataGridView.Rows.Add(triangles[i]._id, triangles[i].v1._id, 
+                    triangles[i].v1._x, triangles[i].v1._y, 
+                    triangles[i].v2._id, triangles[i].v2._x, triangles[i].v2._y);
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -122,7 +128,15 @@ namespace VectorsForms
             int v1_id = Convert.ToInt32(triangleAddX.Text);
             int v2_id = Convert.ToInt32(triangleAddY.Text);
             Triangle t = new Triangle(v1_id,v2_id);
-            triangleMapper.Insert(t);
+            try
+            {
+                triangleMapper.Insert(t);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Таких векторов нет в базе, проверьте id", "INSERT");
+            }
+            
             updateGridTriangles();
         }
 
@@ -150,6 +164,11 @@ namespace VectorsForms
         }
 
         private void triangleAddX_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }

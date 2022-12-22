@@ -15,7 +15,7 @@ namespace VectorsForms
         protected static DBConnection _connection = null;
         public DomainObject(int id)
         {
-            _connection=new DBConnection(@"Data Source=DESKTOP-RQ1TD73\SQLEXPRESS;Initial Catalog=VecrorsBase;Integrated Security=True");
+            _connection=new DBConnection(@"Data Source=DESKTOP-RQ1TD73\SQLEXPRESS;Initial Catalog=VectorsBase;Integrated Security=True");
             if (id > 0)
             {
                 _id = id;
