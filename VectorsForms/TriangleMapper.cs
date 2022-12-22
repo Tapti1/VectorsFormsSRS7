@@ -40,7 +40,7 @@ namespace VectorsForms
 
         public void Insert(Triangle t)
         {
-            string query = $"insert into triangles(v1_id,v2_id) VALUES ({t._v1_id},{t._v2_id})";
+            string query = $"insert into triangles(v1_id,v2_id) VALUES ({t.v1._id},{t.v2._id})";
 
             _connection.openConnection();
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
@@ -65,7 +65,7 @@ namespace VectorsForms
         }
         public bool Update(int id, Triangle t)
         {
-            string query = $"UPDATE triangles SET v1_id='{t._v1_id}' , v2_id='{t._v2_id}' WHERE  id={id}";
+            string query = $"UPDATE triangles SET v1_id='{t.v1._id}' , v2_id='{t.v2._id}' WHERE  id={id}";
             _connection.openConnection();
             SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
             int num = cmd.ExecuteNonQuery();
