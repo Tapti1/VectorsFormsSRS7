@@ -50,7 +50,14 @@ namespace VectorsForms
         }
         public Vector GetById(int id)
         {
-            return new Vector(id);
+            ObjectWatcher ObjectList=ObjectWatcher.GetInstance();
+            Vector result = (Vector)ObjectList.GetObject($"vectors_{id}");
+            if (result == null)
+            {
+                result=new Vector(id);
+                ObjectList.Add($"vector_{id}",result);
+            }
+            return result;
         }
         public bool Delete(int id)
         {

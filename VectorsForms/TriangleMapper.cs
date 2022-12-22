@@ -50,7 +50,14 @@ namespace VectorsForms
         }
         public Triangle GetById(int id)
         {
-            return new Triangle(id);
+            ObjectWatcher ObjectList = ObjectWatcher.GetInstance();
+            Triangle result = (Triangle)ObjectList.GetObject($"triangles_{id}");
+            if (result == null)
+            {
+                result = new Triangle(id);
+                ObjectList.Add($"triangles_{id}", result);
+            }
+            return result;
         }
         public bool Delete(int id)
         {
