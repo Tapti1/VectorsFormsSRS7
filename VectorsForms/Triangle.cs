@@ -10,7 +10,7 @@ namespace VectorsForms
 {
     internal class Triangle:DomainObject
     {
-        public double _v1_x, _v1_y, _v2_x,_v2_y;
+        public Vector v1, v2;
 
         public Triangle(int id) : base(id)
         {
@@ -28,16 +28,17 @@ namespace VectorsForms
                 _v2_id = reader.GetInt32(2);
             }
             reader.Close();
-            _connection.closeConnection();
-            //////////////////////////////////////tytaa
+            _connection.closeConnection();            
 
             VectorMapper mapper = new VectorMapper();
-            Vector v1 = mapper.GetById(_v1_id);
+            v1 = mapper.GetById(_v1_id);
+            v2 = mapper.GetById(_v2_id);
         }
         public Triangle(int v1_id,int v2_id) : base(0)
         {
-            this._v1_id=v1_id;
-            this._v2_id=v2_id;
+            VectorMapper mapper = new VectorMapper();
+            v1 = mapper.GetById(v1_id);
+            v2 = mapper.GetById(v2_id);
         }        
     }
 }
