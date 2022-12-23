@@ -17,7 +17,9 @@ namespace VectorsForms
             Console.WriteLine();
             Console.WriteLine("======================================");
 
-            Triangle t1 = new Triangle(1, 1);
+            List<string> list = new List<string>();list.Add("1"); list.Add("1");
+
+            Triangle t1 = new Triangle(new List<string>());
 
             Console.WriteLine("");
             Console.WriteLine("///////////////////////////////////////");

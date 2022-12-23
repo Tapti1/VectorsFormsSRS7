@@ -21,7 +21,7 @@ namespace VectorsForms
         }
         public DomainObject GetList(int ind)
         {
-            VectorMapper mapper = new VectorMapper();
+            Mapper mapper = new Mapper(TableName);
             return mapper.GetById(_lazyId[ind]);
         }
         public int Count { get { return _lazyId.Count; } }

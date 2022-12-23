@@ -38,9 +38,13 @@ namespace VectorsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double x=Convert.ToDouble(vectorAddX.Text);
-            double y= Convert.ToDouble(vectorAddY.Text);
-            Vector v = new Vector(x, y);
+            string x=Convert.ToString(vectorAddX.Text);
+            string y= Convert.ToString(vectorAddY.Text);
+
+            List<string> par = new List<string>();
+            par.Add(x);par.Add(y);
+            Vector v = new Vector(par);
+
             vectorMapper.Insert(v);
             updateGridVectors();
         }        
@@ -107,10 +111,14 @@ namespace VectorsForms
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            double x = Convert.ToDouble(vectorUpdateX.Text);
-            double y = Convert.ToDouble(vectorUpdateY.Text);
+            string x = Convert.ToString(vectorUpdateX.Text);
+            string y = Convert.ToString(vectorUpdateY.Text);
             int id = Convert.ToInt32(vectorUpdateById.Text);
-            Vector v = new Vector(x, y);
+
+            List<string> par = new List<string>();
+            par.Add(x); par.Add(y);
+            Vector v = new Vector(par);
+
             if (!vectorMapper.Update(id, v))
             {
                 MessageBox.Show("Вектор не найден, проверьте id", "UPDATE");
@@ -125,9 +133,12 @@ namespace VectorsForms
 
         private void button6_Click(object sender, EventArgs e)
         {
-            int v1_id = Convert.ToInt32(triangleAddX.Text);
-            int v2_id = Convert.ToInt32(triangleAddY.Text);
-            Triangle t = new Triangle(v1_id,v2_id);
+            string v1_id = Convert.ToString(triangleAddX.Text);
+            string v2_id = Convert.ToString(triangleAddY.Text);
+
+            List<string> par = new List<string>();
+            par.Add(v1_id); par.Add(v1_id);
+            Triangle t = new Triangle(par);
             try
             {
                 triangleMapper.Insert(t);
@@ -152,10 +163,14 @@ namespace VectorsForms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int v1_id = Convert.ToInt32(triangleUpdateX.Text);
-            int v2_id = Convert.ToInt32(triangleUpdateY.Text);
+            string v1_id = Convert.ToString(triangleUpdateX.Text);
+            string v2_id = Convert.ToString(triangleUpdateY.Text);
             int id = Convert.ToInt32(triangleUpdateById.Text);
-            Triangle t=new Triangle(v1_id,v2_id);
+
+            List<string> par = new List<string>();
+            par.Add(v1_id); par.Add(v1_id);
+            Triangle t = new Triangle(par);
+
             if (!triangleMapper.Update(id, t))
             {
                 MessageBox.Show("Треугольник не найден, проверьте id", "UPDATE");

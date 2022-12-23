@@ -12,26 +12,25 @@ namespace VectorsForms
     {
         public double _x,_y;
         
-        public Vector(int id) : base(id) {
-            string query = $"SELECT * FROM vectors WHERE id={id}";
+        public Vector(List<string> _params) : base(_params) { }
 
-            _connection.openConnection();
-            SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                _x = reader.GetDouble(1);
-                _y = reader.GetDouble(2);
-            }
-            reader.Close();
-            _connection.closeConnection();
-            Console.WriteLine($"Выполняется запрос {query}");
-        }
-        public Vector(double x,double y):base(0)
+        protected override void LoadObject(List<string> _params)
         {
-            this._x = x;
-            this._y = y;         
+            _x = Convert.ToDouble(_params[1]);
+            _y = Convert.ToDouble(_params[2]);
+        }
+        public override string GetStringParams()
+        {
+            return "(x,y)";
+        }
+        public override string GetStringParamsValues()
+        {
+            return $"({_x},{_y})";
+        }
+
+        public override string GetStringSetValues()
+        {
+            return $"x={_x},y={_y}";
         }
         public double Lenght()
         {

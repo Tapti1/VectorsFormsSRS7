@@ -69,29 +69,25 @@ namespace VectorsForms
             {
                 _v2 = value;
             }
-        }
-
-        public Triangle(int id) : base(id)
-        {
-            string query = $"SELECT * FROM triangles WHERE id={id}";            
-
-            _connection.openConnection();
-            SqlCommand cmd = new SqlCommand(query, _connection.getConnection());
-            SqlDataReader reader = cmd.ExecuteReader();            
-
-            while (reader.Read())
-            {
-                _v1_id = reader.GetInt32(1);
-                _v2_id = reader.GetInt32(2);
-            }
-            reader.Close();
-            _connection.closeConnection();
-            Console.WriteLine($"Выполняется запрос {query}");
-        }
-        public Triangle(int v1_id,int v2_id) : base(0)
-        {
-            this._v1_id = v1_id;
-            this._v2_id = v2_id;
         }        
+        public Triangle(List<string> _params) : base(_params) { }
+        
+        protected override void LoadObject(List<string> _params)
+        {
+            v1_id = Convert.ToInt32(_params[1]);
+            v2_id = Convert.ToInt32(_params[2]);
+        }
+        public override string GetStringParams()
+        {
+            return "(v1_id,v2_id)";
+        }
+        public override string GetStringParamsValues()
+        {
+            return $"({v1_id},{v2_id})";
+        }
+        public override string GetStringSetValues()
+        {
+            return $"v1_id={v1_id},v2_id={v2_id}";
+        }
     }
 }
